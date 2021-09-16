@@ -1,11 +1,16 @@
-from bank import Bank
-
 # ToDo #
 # export a bank
 
+from bank import Bank
+import logging
+
+logging.basicConfig(filename='SupportBank.log', filemode='w', level=logging.DEBUG)
+logging.info('SupportBank log start!')
+
+
 support_bank = Bank()
 
-support_bank.load("Transactions2014.csv")
+support_bank.load("DodgyTransactions2015.csv")
 
 # Menu
 live = True

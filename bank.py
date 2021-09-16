@@ -3,6 +3,7 @@
 
 from transaction import Transaction
 from account import Account
+import logging
 
 
 class Bank():
@@ -21,8 +22,12 @@ class Bank():
         self.ledger[name] = Account(name)
 
     def add_transaction(self, line):
-        TA = Transaction(line)
-        AT = Transaction(line).reverse()
+        try:
+            TA = Transaction(line)
+            AT = Transaction(line).reverse()
+        except ValueError:
+            logging.info(f'Poor input: {line}')
+            return
 
         name = TA.get_name()
         if name not in self.ledger:
@@ -40,7 +45,7 @@ class Bank():
     def print_compilation(self):
         for name in self.ledger:
             compiled = self.ledger[name].compile_transactions()
-            print(f"---{name}---")
+            print(f"---{name}--- Total owed: {self.ledger[name].display_balance()}")
             print("Is owed: \t", end="")
             for item in compiled:
                 if compiled[item] > 0:
@@ -52,6 +57,7 @@ class Bank():
                     print(f"{item} - {display_money(compiled[item])}, ", end="")
             print(" ")
 
+
     def account_exists(self, name):
         return name in self.ledger
 
@@ -60,4 +66,6 @@ def display_money(value):
     value = abs(value)
     pennies = value % 100
     pounds = value // 100
+    if pennies < 10:
+        pennies = "0" + str(pennies)
     return f"£{pounds}.{pennies}"

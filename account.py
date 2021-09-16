@@ -1,4 +1,5 @@
 # ToDo #
+import logging
 
 
 class Account():
@@ -12,17 +13,28 @@ class Account():
         self.balance = 0
 
     def display_balance(self):
-        pennies = self.balance % 100
-        pounds = self.balance // 100
-        return f"£{pounds}.{pennies}"
+        sign = ""
+        if self.balance < 0:
+            sign = "-"
+
+        value = abs(self.balance)
+        pennies = value % 100
+        pounds = value // 100
+
+        if pennies < 10:
+            pennies = "0" + str(pennies)
+        return f"{sign}£{pounds}.{pennies}"
 
     def add_transaction(self, transaction):
         self.transactions.append(transaction)
         self.balance += transaction.get_amount()
 
     def print_transactions(self):
+        running = 0
         for ta in self.transactions:
             ta.print_transaction()
+            # running += ta.get_amount()
+            # print (running)
 
         print(f"{self.name} has a balance of: {self.display_balance()}")
 

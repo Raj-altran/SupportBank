@@ -33,6 +33,8 @@ class Transaction():
         value = abs(self.amount)
         pennies = value % 100
         pounds = value // 100
+        if pennies < 10:
+            pennies = "0"+str(pennies)
         return f"£{pounds}.{pennies}"
 
     def display_date(self):

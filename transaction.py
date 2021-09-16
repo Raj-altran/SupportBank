@@ -64,3 +64,14 @@ class Transaction():
         self.amount *= -1
 
         return self
+
+    def export_format(self):
+        # line example: '01/01/2014,Jon A,Sarah T,Pokemon Training,7.8'
+        sign = ""
+        if self.amount < 0:
+            sign = "-"
+        P = abs(self.amount)//100
+        p = abs(self.amount)%100
+        amount = f"{sign}{P}.{p}"
+        line = f"{self.date.strftime('%d/%m/%Y')},{self.sender},{self.receiver},{self.reason},{amount}\n"
+        return line

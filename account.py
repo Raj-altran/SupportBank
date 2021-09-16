@@ -30,13 +30,19 @@ class Account():
         self.balance += transaction.get_amount()
 
     def print_transactions(self):
-        running = 0
         for ta in self.transactions:
             ta.print_transaction()
-            # running += ta.get_amount()
-            # print (running)
-
         print(f"{self.name} has a balance of: {self.display_balance()}")
+
+    def export_transactions(self, bank):
+        filename = f"{bank} - {self.name}.csv"
+        f = open(filename, 'w')
+        lines = ["Date,From,To,Narrative,Amount"]
+        for ta in self.transactions:
+            lines.append(ta.export_format())
+
+        f.writelines(lines)
+        print(f"{filename} created.")
 
     def compile_transactions(self):
         results = {}

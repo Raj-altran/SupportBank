@@ -8,9 +8,9 @@ logging.basicConfig(filename='SupportBank.log', filemode='w', level=logging.DEBU
 logging.info('SupportBank log start!')
 
 
-support_bank = Bank()
+support_bank = Bank("Support Bank")
 
-support_bank.load("DodgyTransactions2015.csv")
+support_bank.load("Transactions2013.json")
 
 # Menu
 live = True

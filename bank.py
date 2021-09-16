@@ -10,6 +10,10 @@ class Bank():
     name = "bank"
     ledger = {}
 
+    def __init__(self, name):
+        self.name = name
+        self.ledger ={}
+
     def load(self, csvfile):
         with open(csvfile) as f:
             lines = f.readlines()

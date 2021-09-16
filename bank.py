@@ -18,7 +18,18 @@ class Bank():
         self.ledger = {}
 
     def load(self, path):
-        extension = path.split(".")[1]
+        try:
+            f = open(path)
+        except IOError:
+            print("File not found.")
+            return
+        extension = ""
+        try:
+            extension = path.split(".")[1]
+        except IndexError:
+            print("File must have an extention")
+            return
+
         if extension == "csv":
             with open(path) as f:
                 lines = f.readlines()
@@ -83,7 +94,7 @@ class Bank():
             print(" ")
 
     def export_compilation(self):
-        filename = f"{self.name} - All.csv"
+        filename = f"{self.name} - All.txt"
         f = open(filename, 'w')
         lines = []
 

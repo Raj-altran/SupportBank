@@ -9,7 +9,6 @@ logging.info('SupportBank log start!')
 
 
 support_bank = Bank("Support Bank")
-support_bank.load("Transactions2012.xml")
 
 # Menu
 live = True
@@ -25,6 +24,8 @@ while live:
             support_bank.print_transactions(parameter)
         else:
             print("That name is not in the database.")
+    elif func == "Import":
+        support_bank.load(parameter)
     elif func == "Export":
         if parameter == "All":
             support_bank.export_compilation()

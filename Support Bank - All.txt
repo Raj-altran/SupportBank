@@ -1,0 +1,36 @@
+---Gergana I--- Total owed: £36.67
+Is owed: 	Jon A - £1.01, Rob S - £5.27, Chris W - £18.29, Laura B - £1.90, Sarah T - £1.03, Ben B - £9.17, Tim L - £10.73, 
+Owes: 		Stephen S - £9.24, Dan W - £1.49, 
+---Jon A--- Total owed: -£9.25
+Is owed: 	Rob S - £3.56, Sarah T - £0.21, Tim L - £0.73, Dan W - £1.41, Ben B - £3.66, 
+Owes: 		Gergana I - £1.01, Chris W - £1.37, Laura B - £2.83, Stephen S - £9.19, Sam N - £4.42, 
+---Sam N--- Total owed: -£28.12
+Is owed: 	Dan W - £1.05, Sarah T - £4.87, Chris W - £6.06, Jon A - £4.42, 
+Owes: 		Rob S - £8.27, Todd - £9.54, Laura B - £5.07, Stephen S - £10.41, Tim L - £11.23, 
+---Dan W--- Total owed: -£35.95
+Is owed: 	Stephen S - £6.54, Chris W - £8.43, Gergana I - £1.49, Rob S - £7.08, 
+Owes: 		Sam N - £1.05, Todd - £5.95, Tim L - £1.11, Laura B - £26.62, Sarah T - £23.35, Jon A - £1.41, 
+---Stephen S--- Total owed: £42.90
+Is owed: 	Sarah T - £7.89, Gergana I - £9.24, Todd - £8.37, Tim L - £0.09, Ben B - £11.09, Jon A - £9.19, Sam N - £10.41, 
+Owes: 		Laura B - £6.02, Chris W - £0.82, Dan W - £6.54, 
+---Sarah T--- Total owed: £39.92
+Is owed: 	Rob S - £3.50, Dan W - £23.35, Laura B - £18.52, Chris W - £8.82, Ben B - £7.60, 
+Owes: 		Stephen S - £7.89, Sam N - £4.87, Jon A - £0.21, Gergana I - £1.03, Tim L - £7.87, 
+---Rob S--- Total owed: -£15.54
+Is owed: 	Sam N - £8.27, Ben B - £11.47, Todd - £12.01, 
+Owes: 		Sarah T - £3.50, Tim L - £7.81, Chris W - £0.64, Jon A - £3.56, Gergana I - £5.27, Laura B - £19.43, Dan W - £7.08, 
+---Tim L--- Total owed: £42.57
+Is owed: 	Chris W - £18.78, Rob S - £7.81, Dan W - £1.11, Ben B - £22.44, Sam N - £11.23, Sarah T - £7.87, 
+Owes: 		Stephen S - £0.09, Jon A - £0.73, Gergana I - £10.73, Todd - £15.12, 
+---Chris W--- Total owed: -£75.22
+Is owed: 	Rob S - £0.64, Stephen S - £0.82, Jon A - £1.37, 
+Owes: 		Tim L - £18.78, Ben B - £3.61, Gergana I - £18.29, Dan W - £8.43, Sam N - £6.06, Todd - £6.55, Sarah T - £8.82, Laura B - £7.51, 
+---Todd--- Total owed: £7.20
+Is owed: 	Dan W - £5.95, Ben B - £11.03, Sam N - £9.54, Chris W - £6.55, Tim L - £15.12, 
+Owes: 		Stephen S - £8.37, Laura B - £20.61, Rob S - £12.01, 
+---Ben B--- Total owed: -£70.42
+Is owed: 	Chris W - £3.61, Laura B - £2.43, 
+Owes: 		Todd - £11.03, Tim L - £22.44, Rob S - £11.47, Stephen S - £11.09, Gergana I - £9.17, Sarah T - £7.60, Jon A - £3.66, 
+---Laura B--- Total owed: £65.24
+Is owed: 	Stephen S - £6.02, Todd - £20.61, Dan W - £26.62, Rob S - £19.43, Sam N - £5.07, Jon A - £2.83, Chris W - £7.51, 
+Owes: 		Gergana I - £1.90, Ben B - £2.43, Sarah T - £18.52, 

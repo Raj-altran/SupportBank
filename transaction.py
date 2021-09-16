@@ -29,15 +29,24 @@ class Transaction():
         value = int(float(value) * 100)
         self.amount = value
 
+    def display_amount(self):
+        value = abs(self.amount)
+        pennies = value % 100
+        pounds = value // 100
+        return f"£{pounds}.{pennies}"
+
+    def display_date(self):
+        return self.date.strftime('%d-%m-%Y')
+
     def print_transaction(self):
         if self.amount > 0:
             print(
-                f"+++ {self.sender} sent {self.amount} to {self.receiver}. Date: {self.date.strftime('%d-%m-%Y')}."
-                f" Reason: {self.reason}")
+                f"+++ {self.sender} sent {self.display_amount()} to {self.receiver}. "
+                f"Date: {self.display_date()}. Reason: {self.reason}")
         else:
             print(
-                f"--- {self.sender} was sent {-1*self.amount} from {self.receiver}. Date: {self.date.strftime('%d-%m-%Y')}."
-                f" Reason: {self.reason}")
+                f"--- {self.sender} was sent {self.display_amount()} from {self.receiver}."
+                f" Date: {self.display_date()}. Reason: {self.reason}")
 
     def get_name(self):
         return self.sender

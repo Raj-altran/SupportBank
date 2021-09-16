@@ -40,6 +40,24 @@ class Bank():
     def print_compilation(self):
         for name in self.ledger:
             compiled = self.ledger[name].compile_transactions()
+            print(f"---{name}---")
+            print("Is owed: \t", end="")
+            for item in compiled:
+                if compiled[item] > 0:
+                    print(f"{item} - {display_money(compiled[item])}, ", end="")
+            print(" ")
+            print(f"Owes: \t\t", end="")
+            for item in compiled:
+                if compiled[item] < 0:
+                    print(f"{item} - {display_money(compiled[item])}, ", end="")
+            print(" ")
 
     def account_exists(self, name):
         return name in self.ledger
+
+
+def display_money(value):
+    value = abs(value)
+    pennies = value % 100
+    pounds = value // 100
+    return f"£{pounds}.{pennies}"

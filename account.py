@@ -11,6 +11,11 @@ class Account():
         self.transactions = []
         self.balance = 0
 
+    def display_balance(self):
+        pennies = self.balance % 100
+        pounds = self.balance // 100
+        return f"£{pounds}.{pennies}"
+
     def add_transaction(self, transaction):
         self.transactions.append(transaction)
         self.balance += transaction.get_amount()
@@ -19,7 +24,7 @@ class Account():
         for ta in self.transactions:
             ta.print_transaction()
 
-        print(f"{self.name} has a balance of: {self.balance}")
+        print(f"{self.name} has a balance of: {self.display_balance()}")
 
     def compile_transactions(self):
         results = {}

@@ -9,14 +9,15 @@ from reader import *
 
 
 class Bank():
-    name = "bank"
-    ledger = {}
+    __name = "bank"
+    __ledger = {}
 
     def __init__(self, name):
         self.name = name
         self.ledger = {}
 
     def load(self, path):
+        path = path.lower()
         try:
             f = open(path)
         except IOError:
@@ -29,40 +30,42 @@ class Bank():
             print("File must have an extention")
             return
 
-        reader = ""
+        file_reader = ""
 
         if extension == "csv":
-            reader = csvReader()
+            file_reader = csvReader()
         elif extension == "json":
-            reader = jsonReader()
+            file_reader = jsonReader()
         elif extension == "xml":
-            reader = xmlReader()
+            file_reader = xmlReader()
         else:
             print("File extension not supported.")
+            return
 
-        reader.load(path)
-        reader.read(self)
+        file_reader.load(path)
+        file_reader.read(self)
+        print("Import successful.")
 
     def add_account(self, name):
         self.ledger[name] = Account(name)
 
     def add_transaction(self, line):
         try:
-            TA = Transaction(line)
-            AT = Transaction(line).reverse()
+            transaction = Transaction(line)
+            reverse_transaction = Transaction(line).reverse()
         except ValueError:
-            logging.info(f'Poor input: {line}')
+            logging.warning(f'Poor input: {line}')
             return
 
-        name = TA.get_name()
+        name = transaction.get_name()
         if name not in self.ledger:
             self.add_account(name)
-        self.ledger[name].add_transaction(TA)
+        self.ledger[name].add_transaction(transaction)
 
-        name = AT.get_name()
+        name = reverse_transaction.get_name()
         if name not in self.ledger:
             self.add_account(name)
-        self.ledger[name].add_transaction(AT)
+        self.ledger[name].add_transaction(reverse_transaction)
 
     def print_transactions(self, name):
         self.ledger[name].print_transactions()
@@ -108,7 +111,10 @@ class Bank():
         print(f"{filename} created.")
 
     def account_exists(self, name):
-        return name in self.ledger
+        for item in self.ledger:
+            if name == item.lower():
+                return True
+        return False
 
 
 def display_money(value):

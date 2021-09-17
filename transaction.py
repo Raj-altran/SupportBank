@@ -17,9 +17,9 @@ class Transaction():
         year = int(dateraw[2])
 
         self.date = datetime.datetime(year, month, day)
-        self.sender = data[1]
-        self.receiver = data[2]
-        self.reason = data[3]
+        self.sender = data[1].lower()
+        self.receiver = data[2].lower()
+        self.reason = data[3].lower()
 
         value = data[4].replace("\n", "")
         value = int(float(value) * 100)
@@ -66,8 +66,8 @@ class Transaction():
         sign = ""
         if self.amount < 0:
             sign = "-"
-        P = abs(self.amount)//100
-        p = abs(self.amount)%100
-        amount = f"{sign}{P}.{p}"
+        pounds = abs(self.amount)//100
+        pence = abs(self.amount)%100
+        amount = f"{sign}{pounds}.{pence}"
         line = f"{self.date.strftime('%d/%m/%Y')},{self.sender},{self.receiver},{self.reason},{amount}\n"
         return line

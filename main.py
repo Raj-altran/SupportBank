@@ -15,19 +15,19 @@ live = True
 
 while live:
     user_input = input("Enter function: ")
-    func = user_input.split(" ")[0]
-    parameter = user_input[len(func)+1:]
-    if func == "List":
-        if parameter == "All":
+    func = user_input.split(" ")[0].lower()
+    parameter = user_input[len(func)+1:].lower()
+    if func == "list":
+        if parameter == "all":
             support_bank.print_compilation()
         elif support_bank.account_exists(parameter):
             support_bank.print_transactions(parameter)
         else:
             print("That name is not in the database.")
-    elif func == "Import":
+    elif func == "import":
         support_bank.load(parameter)
-    elif func == "Export":
-        if parameter == "All":
+    elif func == "export":
+        if parameter == "all":
             support_bank.export_compilation()
         elif support_bank.account_exists(parameter):
             support_bank.export_transactions(parameter)

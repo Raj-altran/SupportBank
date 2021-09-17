@@ -4,9 +4,8 @@
 from transaction import Transaction
 from account import Account
 import logging
-import json
-import xml.etree.ElementTree as ET
 import datetime
+from reader import *
 
 
 class Bank():
@@ -30,26 +29,19 @@ class Bank():
             print("File must have an extention")
             return
 
-        if extension == "csv":
-            with open(path) as f:
-                lines = f.readlines()
-            lines.pop(0)
+        reader = ""
 
-            for line in lines:
-                self.add_transaction(line)
+        if extension == "csv":
+            reader = csvReader()
         elif extension == "json":
-            f = open(path, 'r')
-            data = json.loads(f.read())
-            for item in data:
-                line = json_to_line(item)
-                self.add_transaction(line)
+            reader = jsonReader()
         elif extension == "xml":
-            f = open(path, 'r')
-            data = f.read()
-            root = ET.fromstring(data)
-            for item in root:
-                line = xml_to_line(item)
-                self.add_transaction(line)
+            reader = xmlReader()
+        else:
+            print("File extension not supported.")
+
+        reader.load(path)
+        reader.read(self)
 
     def add_account(self, name):
         self.ledger[name] = Account(name)
@@ -126,32 +118,3 @@ def display_money(value):
     if pennies < 10:
         pennies = "0" + str(pennies)
     return f"£{pounds}.{pennies}"
-
-
-def json_to_line(json):
-    # json example {'date': '2013-12-17', 'fromAccount': 'Sarah T', 'toAccount': 'Ben B', 'narrative': 'Pokemon Training', 'amount': 8.72}
-    # line example: '01/01/2014,Jon A,Sarah T,Pokemon Training,7.8'
-    date = json['date'].split("-")
-    date.reverse()
-    date = "/".join(date)
-    sender = json['fromAccount']
-    receiver = json['toAccount']
-    reason = json['narrative']
-    amount = json['amount']
-
-    line = f"{date},{sender},{receiver},{reason},{amount}"
-    return line
-
-
-def xml_to_line(xml):
-    # line example: '01/01/2014,Jon A,Sarah T,Pokemon Training,7.8'
-    date = xml.attrib
-    date = datetime.datetime(1900, 1, 1) + datetime.timedelta(days=int(date['Date']) - 1)
-    date = date.strftime('%d/%m/%Y')
-    sender = xml[2][0].text
-    receiver = xml[2][1].text
-    reason = xml[0].text
-    amount = xml[1].text
-
-    line = f"{date},{sender},{receiver},{reason},{amount}"
-    return line

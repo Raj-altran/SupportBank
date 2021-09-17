@@ -1,7 +1,3 @@
-# ToDo #
-# create transaction fields
-# create return data function
-
 import datetime
 
 
